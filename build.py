@@ -15,12 +15,12 @@ import tqdm
 
 
 video_path = './assets/bad-apple.mp4'
-code_gen_path = './src/video.h'
-width, height = (32, 24)
+code_gen_path = './src/video.c'
+width, height = (64, 24)
 
 # Set 1
-start_frame = 0
-end_frame = 30
+start_frame = 40
+end_frame = 1000
 # Set 2
 # start_frame = 326
 # end_frame = 326*2

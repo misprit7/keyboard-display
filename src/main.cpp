@@ -2,10 +2,12 @@
 #include "usb_keyboard.h"
 /*#include <Keyboard.h>*/
 
-#include "video.h"
-
-const int display_width = 32;
+const int display_width = 64;
 const int display_height = 24;
+
+extern unsigned int frames[1000][display_height][display_width/32];
+
+int t = 0;
 
 void setup() {
   Keyboard.begin();
@@ -22,12 +24,14 @@ void loop(){
   for(int i = 0; i < display_height; ++i){
     String to_print = "";
     for(int j = 0; j < display_width; j++){
-      to_print += 'o';
+      bool pix = (frames[t][i][j/32] >> (j%32)) & 0b1;
+      to_print += pix ? "O" : " ";
     }
     Keyboard.print(to_print + '\n');
   }
 
-  delay(5'000);
+  delay(200);
+  ++t;
 
 }
 
